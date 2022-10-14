@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Drug Classification</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+  .index
+    {
+    margin: 0px;
+    padding:20px;
+    color:black;
+    font-style: bold;
+    border-radius:30px;
+    font-size:25px;
+    }
+
+    body
+    {
+    background-image: url("https://img.freepik.com/premium-photo/blue-white-capsules-pills-pouring-from-bottle-white-background_51195-3967.jpg?w=2000");
+    background-size: cover;
+    }
+
+    h1,p
+    {
+     animation-duration: 3s;
+     animation-name: slidein;
+    }
+
+    @keyframes slidein
+     {
+     from {
+      margin-left: 100%;
+      width: 300%;
+         }
+
+     to {
+      margin-left: 0%;
+      width: 100%;
+        }
+     }
+   form{
+    padding: 10px;
+        }
+    td
+   {
+    padding: 6px;
+   }
+    p
+    {
+    color:black;
+    font-style:italic;
+    font-size:30px;
+    }
+</style>
+</head>
+<body>
+
+<div class="index">
+    <center>
+        <h1><b>DRUG CLASSIFICATION</b></h1><br>
+        <h3>
+            <p><i>The main purpose of the Drug Classification system is to predict the suitable drug type of patients based on their characteristics.<i></p>
+        </h3><br>
+    </center>
+
+     <!-- Main Input For Receiving Query to our ML -->
+<h6>
+    <form action="{{ url_for('predict')}}"method="post">
+        <b><label for="Age" >Age:</label></b><br>
+        <input type="text" id="Age" name="Age" placeholder="Age" required="required"/><br><br>
+        <label for="Sex">Sex:</label><br>
+        <select id="Sex" name="Sex">
+            <option value="MALE">MALE</option>
+            <option value="FEMALE">FEMALE</option></select><br><br>
+        <label for="BP">BP:</label><br>
+        <select id="BP" name="BP">
+            <option value="LOW">LOW</option>
+            <option value="NORMAL">NORMAL</option>
+            <option value="HIGH">HIGH</option></select><br><br>
+        <label for="Cholesterol">Cholesterol:</label><br>
+        <select id="Cholesterol" name="Cholesterol">
+            <option value="NORMAL">NORMAL</option>
+            <option value="HIGH">HIGH</option></select><br><br>
+        <label for="Na_to_K">Na_to_K:</label><br>
+        <input type="text" id="Na_to_K" name="Na_to_K" placeholder="Na_to_K" required="required"/><br><br>
+
+        <button type="submit" >Predict</button>
+    </form>
+    <br>
+</h6>
+    <h3 >
+            {{ prediction_text }}
+    </h3>
+
+</div>
+
+</body>
+</html>
